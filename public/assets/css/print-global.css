@@ -1,0 +1,48 @@
+/*---helper---*/
+.text-center{ text-align:center !important; }
+.text-right{ text-align:right !important; }
+.table-full{ width:100%; }
+.disp-inline{ display:inline-block !important; }
+
+
+/*---settings---*/
+
+.print-page table{ border-collapse:separate; margin:0; padding:0; }
+.print-page h2{ font-size:24px; }
+.print-page h5{ font-weight:normal; }
+
+.print-page, 
+.print-page th, 
+.print-page td, 
+.print-page h5{ font:14px/20px Arial, serif; }
+
+.print-page th, 
+.print-page td{ text-align:left; margin:0; padding:10px 0; vertical-align:top; font-weight:normal; }
+	
+.print-page *{ margin-top:0; }
+.print-page h1, 
+.print-page h2, 
+.print-page h3, 
+.print-page h4, 
+.print-page h5, 
+.print-page h6, 
+.print-page p, 
+.print-page ul, 
+.print-page ol, 
+.print-page dl, 
+.print-page blockquote{
+	margin:0 0 10px;
+}
+
+@media print{
+	body{ margin:0; padding:0; }
+	table{ margin:0; }
+	th, td{ vertical-align:top; }
+	#header, #content, #footer, .container{ margin:0; padding:0; }
+	#header, #footer{ display:none; }
+	.container{ width:auto; }
+	.nav-toolbar{ display:none; }
+	.hidden-print{ visibility:hidden; display:block !important; }
+	.hidden-print.disp-inline{ visibility:hidden; display:inline-block !important; }
+	.phpdebugbar{ display:none; }
+}

@@ -1,0 +1,7 @@
+services.manifest
+/logs
+/cache
+/debugbar
+/meta
+/sessions
+/views

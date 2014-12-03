@@ -1,0 +1,58 @@
+/*---init---*/
+#print-page-content-main table{ border-collapse:collapse; }
+#print-page-content-main td,
+#print-page-content-main th{ border:#ddd solid 1px; padding-left:10px; padding-right:10px; }
+
+/*---print-page---*/
+
+.print-page{ 
+	max-width:960px; 
+	background: url(form-kwitansi.jpg); 
+	background-size:100%; 
+	padding:40px 50px 40px 50px; 
+	position:relative; 
+}
+.print-page .nav-toolbar{ border:#ddd solid 1px; }
+.print-page .nav-toolbar .navbar-form{ margin-top:8px; }
+
+.print-page .strike{ position:relative; }
+.print-page .strike:before{ position:absolute; content:''; display:block; width:100%; border:red solid; border-width:2px 0 0; bottom:8px; }
+
+.print-page .box{ padding:10px; }
+.print-page .box + .box{ border-top:0 none; }
+.print-page .box.shade{ overflow:hidden; display:block; font-weight:bold; }
+.print-page .box table{ border-collapse:collapse; }
+.print-page .box th, .print-page .box td{ margin:0; padding:5px; }
+.print-page .box-sm{ padding:2px; }
+
+.print-page .key{ float:left; margin-right:10px; }
+.print-page .key-fix{ width:120px; }
+.print-page .ttd{ height:36px; }
+
+.print-page #box-content{ height:250px; overflow:hidden; }
+.print-page #box-content table{ width:98%; }
+.print-page #box-content tbody tr{ border-top:#ddd dashed 1px; }
+.print-page #box-content tfoot{ border-top:#333 solid 1px; }
+.print-page #box-content td{ padding:10px; }
+
+
+@media screen{
+	.print-page .box{ border:#ccc solid 1px; }
+	.print-page .box.shade{ background:#eee; }
+	#print-page-content-main{ margin:0 0 20px; }
+}
+
+/*---misc---*/
+#print-page-header h2{ margin:0 0 3px; }
+#print-page-header .key{ width:80px; }
+#print-page-footer td{ padding-top:0; }
+.print-td-no{ width:20px; }
+.print-td-note{ width:25%; }
+
+
+
+
+/*---debug---*/
+/*body{ position:relative; overflow:hidden; }
+body:after{ content:"."; display:block; width:1px; height:1000px; border-left:red solid 1px; position:absolute; top:0; left:33%; }*/
+/*---end debug---

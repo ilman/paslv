@@ -1,0 +1,30 @@
+table, th, td{ font-size:inherit; line-height:inherit; }
+.container{ width:960px; }
+.fa{ line-height:inherit; }
+.padding-4x{ padding:4em; }
+
+/*---template---*/
+#header{ margin-bottom:60px; }
+
+/*---page index---*/
+.nav-toolbar{ margin:0; }
+.nav-toolbar form{ margin:0; padding:0; }
+.nav-toolbar .pagination{ margin:10px 10px; float:right; }
+.nav-toolbar .navbar-right{ padding-right:10px; }
+.panel .nav-toolbar{ border-top:#ddd solid 1px; }
+.panel .table-list{ border-top:#ddd solid 1px; }
+.panel-heading + .nav-toolbar{ border-top:0 none; }
+
+/*---table---*/
+.td-no{ text-align:right; width:35px; color:#999; font-weight:bold; }
+.td-action{ text-align:right; }
+.td-action >a{ margin-left:5px; }
+.td-action .fa{ color:#333; }
+.td-action .fa-pencil{ color:orange; }
+.td-action .fa-remove{ color:red; }
+
+
+/*---form---*/
+.form-horizontal .control-label{ text-align:left; }
+.btn-default{ background-color:#e7e7e7; }
+.radio label + label{ margin-left:20px; }
