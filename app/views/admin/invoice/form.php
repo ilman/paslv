@@ -55,6 +55,29 @@
 </div>
 <div class="form-group">
 	<label>Untuk Pembayaran</label>
+
+	<div class="row">
+		<div class="col-sm-9">
+			Detail
+		</div>
+		<div class="col-sm-3">
+			Nilai
+		</div>
+	</div>
+
+	<div class="repeatable">
+		<div class="row repeat-item">
+			<div class="col-sm-9">
+				<?php echo SG_Form::field('textarea', 'invoice_text_params[detail]', $values, $attr) ?>
+			</div>
+			<div class="col-sm-3">
+				<?php echo SG_Form::field('text', 'invoice_text_params[value]', $values, $attr) ?>
+				<a class="repeat-delete">x</a>
+			</div>		
+		</div>
+		<p><a class="btn btn-default repeat-add">Tambah Baris Baru</a></p>
+	</div>
+
 	<?php 
 		$custom_attr = array(
 			'class' => 'form-control',
