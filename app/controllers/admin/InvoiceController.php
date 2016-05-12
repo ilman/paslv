@@ -32,6 +32,7 @@ class InvoiceController extends BaseController {
 
 		$data = array(
 			'content' => 'admin/invoice/print',
+			'invoice_id' => $invoice_id,
 			'values' => $values,
 		);
 
@@ -92,7 +93,7 @@ class InvoiceController extends BaseController {
 		$input_client_name = Input::get('client_name','');
 		$input_invoice_amount = Input::get('invoice_amount',0);
 		$input_invoice_amount_text = Input::get('invoice_amount_text','');
-		$input_invoice_text = Input::get('invoice_text','');
+		$input_invoice_text = json_encode(Input::get('invoice_text',''));
 		$input_employee_name = Input::get('employee_name','');
 
 		$data = array(

@@ -11,7 +11,7 @@
 <div class="print-page">
 	<div class="navbar nav-toolbar">
 		<div class="navbar-form">
-			<a class="btn btn-default">
+			<a class="btn btn-default" href="<?php echo url('invoice/edit/'.$invoice_id) ?>">
 				<i class="fa fa-pencil"></i> Ubah
 			</a>
 			<button type="button" class="btn btn-default" onClick="javascript:window.print()">
@@ -78,7 +78,47 @@
 				<td>
 					<div class="box" id="box-content">
 						<h5 class="hidden-print">Untuk Pembayaran:</h5>
-						<?php echo SG_Util::val($values, 'invoice_text') ?>
+						
+
+
+
+						<table class="table" id="invoice-desc">
+							<tbody>
+								<?php 
+									$invoice_text = SG_Util::val($values, 'invoice_text');
+									$rows = json_decode($invoice_text);
+									$table_total = 0;
+								?>
+
+								<?php if(is_array($rows)): ?>
+									<?php $i=0; foreach($rows as $row): ?>
+										<?php 
+											$row_total = (isset($row->price) && isset($row->qty)) ? $row->price * $row->qty : '';
+											$table_total = ($row_total) ? $table_total + $row_total : $table_total + 0;
+										?>
+										<tr>
+											<td><?php echo $i + 1 ?></td>
+											<td><?php echo $row->product ?></td>
+											<td style="text-align:right"><?php echo $row->price ?></td>
+											<td style="text-align:right"><?php echo ($row->qty) ? 'x ' . $row->qty : '' ?></td>
+											<td style="text-align:right"><?php echo $row_total ?></td>
+										</tr>
+									<?php $i++; endforeach; ?>
+								<?php endif; ?>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="3">&nbsp;</td>
+									<td style="text-align:right">Total</td>
+									<td style="text-align:right"><?php echo $table_total ?></td>
+								</tr>
+							</tfoot>
+						</table>
+
+
+
+
+
 					</div>
 				</td>
 			</tr>

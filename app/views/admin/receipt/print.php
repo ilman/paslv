@@ -32,7 +32,7 @@
 <div class="print-page">
 	<div class="navbar nav-toolbar">
 		<div class="navbar-form">
-			<a class="btn btn-default">
+			<a class="btn btn-default" href="<?php echo url('receipt/edit/') ?>">
 				<i class="fa fa-pencil"></i> Ubah
 			</a>
 			<button type="button" class="btn btn-default" onClick="javascript:window.print()">
