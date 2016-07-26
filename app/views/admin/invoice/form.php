@@ -75,27 +75,29 @@
 				$invoice_text = SG_Util::val($values, 'invoice_text');
 				$rows = json_decode($invoice_text);
 				$table_total = 0;
+
+				if(!is_array($rows)){
+					$rows = array([]);
+				}
 			?>
 
-			<?php if(is_array($rows)): ?>
-				<?php $i=0; foreach($rows as $row): ?>
-					<?php 
-						$row_total = (isset($row->price) && isset($row->qty)) ? $row->price * $row->qty : '';
-						$table_total = ($row_total) ? $table_total + $row_total : $table_total + 0;
-					?>
-					<tr>
-						<td><?php echo $i + 1 ?></td>
-						<td><?php echo SG_Form::field('textarea', 'invoice_text['.$i.'][product]', $row->product, $attr) ?></td>
-						<td><?php echo SG_Form::field('text', 'invoice_text['.$i.'][price]', $row->price, array('class'=>'form-control tr-input-price')) ?></td>
-						<td><?php echo SG_Form::field('text', 'invoice_text['.$i.'][qty]', $row->qty, array('class'=>'form-control tr-input-qty')) ?></td>
-						<td><input type="text" class="form-control tr-total" readonly="readonly" value="<?php echo $row_total ?>"></td>
-						<td>
-							<a class="btn btn-default"><i class="fa fa-arrows"></i></a>
-							<a class="btn btn-default tr-delete"><i class="fa fa-remove"></i></a>
-						</td>
-					</tr>
-				<?php $i++; endforeach; ?>
-			<?php endif; ?>
+			<?php $i=0; foreach($rows as $row): ?>
+				<?php 
+					$row_total = (isset($row->price) && isset($row->qty)) ? $row->price * $row->qty : '';
+					$table_total = ($row_total) ? $table_total + $row_total : $table_total + 0;
+				?>
+				<tr>
+					<td><?php echo $i + 1 ?></td>
+					<td><?php echo SG_Form::field('textarea', 'invoice_text['.$i.'][product]', SG_Util::val($row, 'product'), $attr) ?></td>
+					<td><?php echo SG_Form::field('text', 'invoice_text['.$i.'][price]', SG_Util::val($row, 'price'), array('class'=>'form-control tr-input-price')) ?></td>
+					<td><?php echo SG_Form::field('text', 'invoice_text['.$i.'][qty]', SG_Util::val($row, 'qty'), array('class'=>'form-control tr-input-qty')) ?></td>
+					<td><input type="text" class="form-control tr-total" readonly="readonly" value="<?php echo $row_total ?>"></td>
+					<td>
+						<a class="btn btn-default"><i class="fa fa-arrows"></i></a>
+						<a class="btn btn-default tr-delete"><i class="fa fa-remove"></i></a>
+					</td>
+				</tr>
+			<?php $i++; endforeach; ?>
 		</tbody>
 		<tfoot>
 			<tr>

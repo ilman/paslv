@@ -57,7 +57,7 @@
 						<span class="val">
 							<?php 
 								$client_name = SG_Util::val($values, 'client_name');
-								echo ($client_name) ? $client_name : '-';
+								echo ($client_name) ? ucwords($client_name) : '-';
 							?>
 						</span>
 					</div>
@@ -82,7 +82,7 @@
 
 
 
-						<table class="table" id="invoice-desc">
+						<table class="table" id="invoice-desc" style="table-layout: fixed;">
 							<tbody>
 								<?php 
 									$invoice_text = SG_Util::val($values, 'invoice_text');
@@ -97,11 +97,10 @@
 											$table_total = ($row_total) ? $table_total + $row_total : $table_total + 0;
 										?>
 										<tr>
-											<td><?php echo $i + 1 ?></td>
+											<td width="50"><?php echo $i + 1 ?></td>
 											<td><?php echo $row->product ?></td>
-											<td style="text-align:right"><?php echo $row->price ?></td>
-											<td style="text-align:right"><?php echo ($row->qty) ? 'x ' . $row->qty : '' ?></td>
-											<td style="text-align:right"><?php echo $row_total ?></td>
+											<td width="150" style="text-align:right"><?php echo 'Rp ' . $row->price ?> <?php echo ($row->qty) ? ' x ' . $row->qty : '' ?></td>
+											<td width="150" style="text-align:right"><?php echo 'Rp ' . $row_total ?></td>
 										</tr>
 									<?php $i++; endforeach; ?>
 								<?php endif; ?>
@@ -109,8 +108,8 @@
 							<tfoot>
 								<tr>
 									<td colspan="3">&nbsp;</td>
-									<td style="text-align:right">Total</td>
-									<td style="text-align:right"><?php echo $table_total ?></td>
+									<td style="text-align:right">
+										<span>Total: </span> <?php echo 'Rp ' . $table_total ?></td>
 								</tr>
 							</tfoot>
 						</table>
@@ -136,7 +135,7 @@
 				<td width="33%" class="text-center">
 					<h5 class="hidden-print">Yang Menerima Pembayaran</h5>
 					<div class="ttd">&nbsp;</div>
-					<?php echo SG_Util::val($values, 'employee_name') ?>
+					<?php echo ucwords(SG_Util::val($values, 'employee_name')) ?>
 				</td>
 			</tr>
 		</table>

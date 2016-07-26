@@ -144,7 +144,7 @@ jQuery(document).ready(function($){
 				var $each = $(this);
 				var each_val = $each.val();
 
-				if(isNaN(each_val)){
+				if(isNaN(each_val) || !each_val){
 					each_val = 0;
 				}
 
